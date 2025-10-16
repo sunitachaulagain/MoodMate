@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Mood Entry</title>
+  </head>
+  <body>
+    <h1> Add your Mood Entry</h1>
+    <form method="post">
+    {% csrf_token %}
+    <label for="mood">Mood:</label>
+    <select name="mood" id="mood" required>
+        <option value="">--Select your mood--</option>
+        <option value="Happy">😊 Happy</option>
+        <option value="Sad">😢 Sad</option>
+        <option value="Excited">🤩 Excited</option>
+        <option value="Angry">😡 Angry</option>
+        <option value="Relaxed">😌 Relaxed</option>
+    </select>
+    <button type="submit">Save</button>
+</form>
+
+<a href="{% url 'mood-list' %}">View My Moods</a>
+
+
+</html>

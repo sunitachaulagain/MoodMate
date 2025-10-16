@@ -1,0 +1,13 @@
+<h1>My Mood Entries</h1>
+
+<ul>
+  {% for entry in entries %}
+    <li>{{ entry.date|date:"M d, Y H:i" }} - {{ entry.mood }}: {{ entry.note }}</li>
+  {% empty %}
+    <li>No mood entries yet!</li>
+  {% endfor %}
+</ul>
+
+<a href="{% url 'add-mood' %}">Add New Mood</a>
+<a href="{% url 'home' %}">Home</a>
+
