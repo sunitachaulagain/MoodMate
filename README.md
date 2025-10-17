@@ -31,16 +31,22 @@ This project is part of my **7-day Django learning challenge**, where I build an
   - note (TextField)
 - Register model in admin and test
 
+##### ================= COMPLETED =OCT 12=============
+
 ### 🕑 **Day 2 – Forms & Views**
 
 - Create form to add new mood entry
 - Create views to add and display entries
 - Design templates with Bootstrap
 
+##### ================= COMPLETED = OCT 16 =============
+
 ### 🕒 **Day 3 – Authentication**
 
 - Add signup, login, logout using Django’s built-in auth
 - Protect routes so each user can only access their own entries
+
+##### ============== COMPLETED 0CT 17 ========================
 
 ### 🕓 **Day 4 – Quotes Integration**
 
