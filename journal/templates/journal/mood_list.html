@@ -1,13 +1,73 @@
-<h1>My Mood Entries</h1>
+{% extends 'base.html' %} {% block content %}
+<div class="container py-5">
+  <div class="text-center mb-4">
+    <h1 class="fw-bold text-purple">My Mood Entries</h1>
+    <p class="text-muted">Track your moods and reflect on your journey 🌸</p>
+  </div>
 
-<ul>
-  {% for entry in entries %}
-    <li>{{ entry.date|date:"M d, Y H:i" }} - {{ entry.mood }}: {{ entry.note }}</li>
-  {% empty %}
-    <li>No mood entries yet!</li>
-  {% endfor %}
-</ul>
+  {% if entries %}
+  <div class="row g-4">
+    {% for entry in entries %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm rounded-4 p-3 h-100">
+        <div class="d-flex justify-content-between mb-2">
+          <span class="badge bg-purple text-white">{{ entry.mood }}</span>
+          <small class="text-muted">{{ entry.date|date:"M d, Y H:i" }}</small>
+        </div>
+        <p class="mb-0">{{ entry.note }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="alert alert-purple text-center rounded-4">
+    No mood entries yet! Start journaling today 🌸
+  </div>
+  {% endif %}
 
-<a href="{% url 'add-mood' %}">Add New Mood</a>
-<a href="{% url 'home' %}">Home</a>
+  <div class="text-center mt-4">
+    <a href="{% url 'add-mood' %}" class="btn btn-purple me-2">Add New Mood</a>
+    <a href="{% url 'home' %}" class="btn btn-outline-purple">Home</a>
+  </div>
+</div>
 
+<style>
+  /* Custom Purple Theme */
+  .bg-purple {
+    background-color: #ba68c8 !important;
+  }
+
+  .btn-purple {
+    background-color: #ba68c8;
+    color: white;
+    border-radius: 25px;
+    font-weight: 500;
+    border: none;
+    transition: 0.3s;
+  }
+
+  .btn-purple:hover {
+    background-color: #ab47bc;
+    color: white;
+  }
+
+  .btn-outline-purple {
+    color: #ba68c8;
+    border: 2px solid #ba68c8;
+    border-radius: 25px;
+    transition: 0.3s;
+  }
+
+  .btn-outline-purple:hover {
+    background-color: #ba68c8;
+    color: white;
+  }
+
+  .alert-purple {
+    background-color: #f3e5f5;
+    color: #6a1b9a;
+    padding: 20px;
+    font-weight: 500;
+  }
+</style>
+{% endblock %}

@@ -1,42 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MoodMate - Home</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-            background-color: #f0f8ff;
-        }
-        h1 {
-            color: #333;
-        }
-        a {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        a:hover {
-            background-color: #45a049;
-        }
-        p {
-            font-size: 18px;
-            color: #555;
-        }
-    </style>
-</head>
-<body>
-    <h1>Welcome to MoodMate</h1>
-    <p>Track how you feel every day</p>
-    <a href="{% url 'add-mood' %}">Add Mood</a>
-    <br>
-    <a href="{% url 'mood-list' %}">View My Moods</a>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section d-flex align-items-center justify-content-center" 
+         style="background: linear-gradient(135deg, #fce4ec, #f3e5f5); height: 70vh;">
+    
+    <div class="container text-center text-dark">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                {% if user.is_authenticated %}
+                    <h1 class="display-4 fw-bold">Welcome back, {{ user.username }}! 🌸</h1>
+                    <p class="lead mt-3 fs-5">How are you feeling today? What’s on your mind? Journalize it below!</p>
+                    <a href="{% url 'add-mood' %}" class="btn btn-lg btn-main mt-3">Start Journaling</a>
+                {% else %}
+                    <h1 class="display-4 fw-bold">Track Your Mood. Find Your Calm 🌙</h1>
+                    <p class="lead mt-3 fs-5">Express your emotions, reflect on your journey, and get inspired every day.</p>
+                    <a href="{% url 'signup' %}" class="btn btn-lg btn-main mt-3">Sign Up & Start Journaling</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row text-center g-4">
+            <div class="col-md-4">
+                <div class="card shadow-sm rounded-4 p-4 h-100" style="background-color: #f8f1fa;">
+                    <div class="display-4 mb-3">📝</div>
+                    <h5 class="fw-bold mb-2">Add Moods</h5>
+                    <p class="text-muted">Record your daily feelings and thoughts easily.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm rounded-4 p-4 h-100" style="background-color: #f8f1fa;">
+                    <div class="display-4 mb-3">💬</div>
+                    <h5 class="fw-bold mb-2">Get Quotes</h5>
+                    <p class="text-muted">Receive motivational quotes that match your mood.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow-sm rounded-4 p-4 h-100" style="background-color: #f8f1fa;">
+                    <div class="display-4 mb-3">📜</div>
+                    <h5 class="fw-bold mb-2">View History</h5>
+                    <p class="text-muted">Look back at your emotional journey anytime.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quote Section -->
+<section class="py-5 text-center" style="background: linear-gradient(135deg, #f3e5f5, #fce4ec); color: #6a1b9a;">
+    <div class="container">
+        <blockquote class="fs-4 fst-italic">"Every mood has meaning — and every feeling deserves to be heard."</blockquote>
+        <footer class="text-muted mt-2">– MoodMate 💖</footer>
+    </div>
+</section>
+{% endblock %}

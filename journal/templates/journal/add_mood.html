@@ -1,27 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add Mood Entry</title>
-  </head>
-  <body>
-    <h1> Add your Mood Entry</h1>
-    <form method="post">
-    {% csrf_token %}
-    <label for="mood">Mood:</label>
-    <select name="mood" id="mood" required>
-        <option value="">--Select your mood--</option>
-        <option value="Happy">😊 Happy</option>
-        <option value="Sad">😢 Sad</option>
-        <option value="Excited">🤩 Excited</option>
-        <option value="Angry">😡 Angry</option>
-        <option value="Relaxed">😌 Relaxed</option>
-    </select>
-    <button type="submit">Save</button>
-</form>
+{% extends 'base.html' %} {% block content %}
+<div class="container py-5">
+  <div class="d-flex justify-content-center">
+    <div
+      class="card shadow-sm rounded-4 p-4"
+      style="max-width: 500px; width: 100%"
+    >
+      <!-- Header -->
+      <div class="text-center mb-4">
+        <h2 class="fw-bold text-purple">Add Your Mood 🌸</h2>
+        <p class="text-muted">
+          How are you feeling today? Share your thoughts!
+        </p>
+      </div>
 
-<a href="{% url 'mood-list' %}">View My Moods</a>
+      <!-- Success alert -->
+      {% if messages %} {% for message in messages %}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+      {% endfor %} {% endif %}
 
+      <!-- Mood form -->
+      <form method="post">
+        {% csrf_token %}
 
-</html>
+        <!-- Mood selection -->
+        <div class="mb-3">
+          <label for="id_mood" class="form-label fw-semibold"
+            >Select Mood</label
+          >
+          <select name="mood" id="id_mood" class="form-select" required>
+            <option value="">--Select your mood--</option>
+            <option value="Happy">😊 Happy</option>
+            <option value="Sad">😢 Sad</option>
+            <option value="Excited">🤩 Excited</option>
+            <option value="Tired">😴 Tired</option>
+            <option value="Calm">😌 Calm</option>
+          </select>
+        </div>
+
+        <!-- Note -->
+        <div class="mb-3">
+          <label for="id_note" class="form-label fw-semibold">Your Note</label>
+          <textarea
+            name="note"
+            id="id_note"
+            rows="4"
+            class="form-control"
+            placeholder="Write something..."
+            required
+          ></textarea>
+        </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-purple w-100 py-2 fw-semibold">
+          Save Mood
+        </button>
+      </form>
+
+      <!-- Footer link -->
+      <div class="text-center mt-3">
+        <a href="{% url 'mood-list' %}" class="text-purple fw-semibold"
+          >View My Moods</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Optional: add a small JS snippet to auto-focus the note field when mood is selected -->
+<script>
+  const moodSelect = document.getElementById("id_mood");
+  const noteField = document.getElementById("id_note");
+  moodSelect.addEventListener("change", () => {
+    noteField.focus();
+  });
+</script>
+{% endblock %}
