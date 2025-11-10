@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Quote - MoodMate{% endblock %}
+
+{% block content %}
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-sm rounded-4 p-4">
+          <h3 class="mb-4 text-center">Add Your Quote 💬</h3>
+          
+          <form method="post">
+            {% csrf_token %}
+            
+            <!-- Mood Dropdown -->
+            <div class="mb-3">
+              <label for="id_mood" class="form-label fw-bold">Select Mood</label>
+              {{ form.mood }}
+              {% if form.mood.errors %}
+                <div class="text-danger small">{{ form.mood.errors }}</div>
+              {% endif %}
+            </div>
+
+            <!-- New Mood Input -->
+            <div class="mb-3">
+              <label for="id_new_mood" class="form-label fw-bold">Or Add a New Mood</label>
+              {{ form.new_mood }}
+              {% if form.new_mood.errors %}
+                <div class="text-danger small">{{ form.new_mood.errors }}</div>
+              {% endif %}
+            </div>
+
+            <!-- Quote Textarea -->
+            <div class="mb-3">
+              <label for="id_text" class="form-label fw-bold">Your Quote</label>
+              {{ form.text }}
+              {% if form.text.errors %}
+                <div class="text-danger small">{{ form.text.errors }}</div>
+              {% endif %}
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center">
+              <button type="submit" class="btn btn-main">Save Quote</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

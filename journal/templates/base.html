@@ -82,7 +82,10 @@
           <ul class="navbar-nav">
             {% if user.is_authenticated %}
               <li class="nav-item"><a class="nav-link" href="{% url 'add-mood' %}">Add Mood</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'add-quote' %}">Add Quotes</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'mood-list' %}">My Moods</a></li>
+
+
               <li class="nav-item">
                 <form action="{% url 'logout' %}" method="post" class="d-inline-block">
                   {% csrf_token %}

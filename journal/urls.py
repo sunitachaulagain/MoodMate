@@ -7,6 +7,7 @@ from rest_framework import routers
 from .views import home, add_mood, mood_list
 from .views_api import MoodEntryViewSet
 
+
 router = routers.DefaultRouter()
 router.register(r'moods', MoodEntryViewSet)
 
@@ -24,6 +25,22 @@ urlpatterns = [
     
     # API URLS
     path('api/', include(router.urls)),
+    
+    # quotes urls
+    path('quotes/', views.show_quotes, name='show-quotes'),
+    
+    
+
+    # for adding mood
+    path('moods/add/', views.add_mood, name='add-mood'),
+
+    # for adding quote
+    path('quotes/add/', views.add_quote, name='add-quote'),  
+    
+    #quote-list urls
+    path('quotes/', views.quote_list, name='quote-list'),
+
+    
 
     
 

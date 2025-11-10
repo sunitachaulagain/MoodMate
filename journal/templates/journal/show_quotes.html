@@ -1,0 +1,9 @@
+<blockquote class="fs-5 fst-italic text-dark mb-2">
+  {% if quote.text %} “{{ quote.text|default:'Every mood has meaning — and every
+  feeling deserves to be heard.' }}” {% else %} “{{ quote|default:'Every mood
+  has meaning — and every feeling deserves to be heard.' }}” {% endif %}
+</blockquote>
+<footer class="text-muted text-end">
+  {% if quote.author %} – {{ quote.author|default:"MoodMate" }} {% else %} –
+  MoodMate {% endif %}
+</footer>
