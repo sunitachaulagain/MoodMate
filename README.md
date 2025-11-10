@@ -53,6 +53,8 @@ This project is part of my **7-day Django learning challenge**, where I build an
 - Connect to ZenQuotes API or local `quotes.json`
 - Show a quote based on the user’s selected mood
 
+###(whats done here : intregrated Zen API to generate random quotes in a homepage, and user entered personalized quotes in a seperate page after adding mood, because personilized quotes API is not free.)
+
 ### 🕔 **Day 5 – Dashboard**
 
 - Add recent entries section
