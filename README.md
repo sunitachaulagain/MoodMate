@@ -54,6 +54,7 @@ This project is part of my **7-day Django learning challenge**, where I build an
 - Show a quote based on the user’s selected mood
 
 ###(whats done here : intregrated Zen API to generate random quotes in a homepage, and user entered personalized quotes in a seperate page after adding mood, because personilized quotes API is not free.)
+### project is almost done, mood based quotes fe=eatures using ai will done later....
 
 ### 🕔 **Day 5 – Dashboard**
 
